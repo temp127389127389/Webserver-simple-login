@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Test1 - Simple login</title>
+
+    <meta charset="utf-8">
+</head>
+
+<body>
+    {% if is_logged_in %}
+    <h1>Welcome</h1>
+    <p>hi {{name}} <a href="/logout">Logout</a></p>
+
+    <form action="/set_fave_color" method="post">
+        What's your favorite color? <br>
+        <input type="color" name="color" value="{{fave_color}}"> <br>
+        <input type="submit" value="Submit">
+    </form>
+    <br>
+
+    {% else %}
+    <h1>LOGIN</h1>
+    <form action="/login" method="post">
+        Username: <br>
+        <input type="text" name="username"> <br>
+        Password: <br>
+        <input type="password" name="password"> <br>
+        <input type="submit" value="Login">
+    </form>
+    <br>
+    <br>
+    <a href="/signup">Signup</a>
+    <br>
+    {% endif %}
+
+    {% set messages = get_flashed_messages() %}
+    {% for message in messages %}
+    <br>
+    {{message}}
+    {% endfor %}
+
+    <br>
+    <br>
+    <a href="{{ url_for('color_tally') }}">Check out the color tally!</a>
+
+</body>

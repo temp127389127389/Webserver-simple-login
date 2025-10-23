@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Test 1 - Color tally</title>
+    <meta charset="utf-8">
+
+    <style>
+        li {
+            -webkit-text-stroke: 1px black;
+            font-size: 30px;
+        }
+
+        li>p {
+            margin: 0;
+            -webkit-text-stroke: initial;
+            color: initial;
+            font-size: initial;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Color tally</h1>
+    <p>Whats the most common favorite color?</p>
+
+    {% if not color_dict %}
+    <p>Seems like no one has chosen a favorite color yet</p>
+    {% else %}
+    <ul>
+        {% for color, count in color_dict.items() %}
+        <li style="color: {{color}};">
+            <p>{{color}}: {{count}}</p>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <br>
+    <a href="{{ url_for('index') }}">Go back</a>
+</body>

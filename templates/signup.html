@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Test 1 - Signup</title>
+
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <h1>Signup</h1>
+
+    <form action="/signup" method="post">
+        Username: <br>
+        <input type="text" name="username"> <br>
+        Name: <br>
+        <input type="text" name="name"> <br>
+        Email: <br>
+        <input type="email" name="email"> <br>
+        Password: <br>
+        <input type="password" name="password"> <br>
+        <br>
+        <input type="submit" value="Signup">
+    </form>
+
+
+    {% set messages = get_flashed_messages() %}
+    {% for message in messages %}
+    <br>
+    {{message}}
+    {% endfor %}
+
+    <br>
+    <br>
+    <a href="{{ url_for('index') }}">Go back</a>
+</body>
